@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Sticky Notes - {{ page_title }}
+{% endblock %}
+{% block content %}
+  <h2>
+    {{ page_title }}
+  </h2>
+
+  <a href="{% url 'create_note' %}" class="btn btn-primary btn-lg w-100 mb-3">Add sticky note</a>
+  
+  <div class="row">
+
+    {% for note in notes %}
+      <div class="col-md-3 mb-4">
+        <div class="card" style="background-color: rgb(255, 249, 194); height: 100%;">
+          
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{% url 'view_note' pk=note.pk %}">{{ note.title }}</a>
+            </h5>
+
+            <p class="card-text">
+              {{ note.content|linebreaksbr|truncatewords:25 }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

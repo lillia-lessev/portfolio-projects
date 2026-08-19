@@ -1,0 +1,122 @@
+<mxfile host="Electron" pages="3">
+  <diagram name="Use case diagram" id="OOZ8t25iDeFqrQaqvTuW">
+    <mxGraphModel dx="452" dy="832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="k0aPY4xHd4r1nSJNPBVE-1" parent="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=27;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Use case diagram" vertex="1">
+          <mxGeometry height="40" width="320" x="130" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-1" parent="1" style="html=1;whiteSpace=wrap;fillColor=default;" value="" vertex="1">
+          <mxGeometry height="460" width="200" x="270" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-2" edge="1" parent="1" source="Ca7DF_9rQyOSxxNHHvwI-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;edgeStyle=orthogonalEdgeStyle;" target="Ca7DF_9rQyOSxxNHHvwI-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-3" edge="1" parent="1" source="Ca7DF_9rQyOSxxNHHvwI-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Ca7DF_9rQyOSxxNHHvwI-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-4" edge="1" parent="1" source="Ca7DF_9rQyOSxxNHHvwI-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Ca7DF_9rQyOSxxNHHvwI-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-5" edge="1" parent="1" source="Ca7DF_9rQyOSxxNHHvwI-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Ca7DF_9rQyOSxxNHHvwI-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-6" edge="1" parent="1" source="Ca7DF_9rQyOSxxNHHvwI-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Ca7DF_9rQyOSxxNHHvwI-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-7" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="User" vertex="1">
+          <mxGeometry height="240" width="117.5" x="40" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-8" parent="1" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" value="StickyNotes Application" vertex="1">
+          <mxGeometry height="26" width="80" x="330" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-9" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1,&quot;sourcePerimeterSpacing&quot;:0,&quot;targetPerimeterSpacing&quot;:0};treeFolding=1;treeMoving=1;" value="Create StickyNote" vertex="1">
+          <mxGeometry height="50" width="117.5" x="311.25" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1,&quot;sourcePerimeterSpacing&quot;:0,&quot;targetPerimeterSpacing&quot;:0};treeFolding=1;treeMoving=1;" value="View StickyNotes" vertex="1">
+          <mxGeometry height="50" width="117.5" x="311.25" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-11" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1,&quot;sourcePerimeterSpacing&quot;:0,&quot;targetPerimeterSpacing&quot;:0};treeFolding=1;treeMoving=1;" value="Update / Edit StickyNotes" vertex="1">
+          <mxGeometry height="50" width="117.5" x="311.25" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-12" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1,&quot;sourcePerimeterSpacing&quot;:0,&quot;targetPerimeterSpacing&quot;:0};treeFolding=1;treeMoving=1;" value="Delete StickyNotes" vertex="1">
+          <mxGeometry height="50" width="117.5" x="311.25" y="448" as="geometry" />
+        </mxCell>
+        <mxCell id="Ca7DF_9rQyOSxxNHHvwI-13" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1,&quot;sourcePerimeterSpacing&quot;:0,&quot;targetPerimeterSpacing&quot;:0};treeFolding=1;treeMoving=1;" value="Login" vertex="1">
+          <mxGeometry height="50" width="117.5" x="311.25" y="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Sequence Diagram" id="gJEE2-AHROG6dnx9mK9Q">
+    <mxGraphModel dx="452" dy="832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="iRPJwkQ62jZ0Rl6m9txl-0" />
+        <mxCell id="iRPJwkQ62jZ0Rl6m9txl-1" parent="iRPJwkQ62jZ0Rl6m9txl-0" />
+        <mxCell id="iRPJwkQ62jZ0Rl6m9txl-3" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=27;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Sequence diagram" vertex="1">
+          <mxGeometry height="40" width="315" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7Mv14wQEGXTRnZwCA2de-7" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="User" vertex="1">
+          <mxGeometry height="300" width="100" x="100" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7Mv14wQEGXTRnZwCA2de-8" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="StickyNote" vertex="1">
+          <mxGeometry height="300" width="100" x="280" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7Mv14wQEGXTRnZwCA2de-9" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Database" vertex="1">
+          <mxGeometry height="300" width="100" x="460" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7Mv14wQEGXTRnZwCA2de-10" edge="1" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="7Mv14wQEGXTRnZwCA2de-8" value="Create&amp;nbsp; StickyNote">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="150" y="200" as="sourcePoint" />
+            <mxPoint x="230" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Mv14wQEGXTRnZwCA2de-11" edge="1" parent="iRPJwkQ62jZ0Rl6m9txl-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" value="Save to database">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="330" y="240" as="sourcePoint" />
+            <mxPoint x="510" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Class diagram" id="ZU_qtXv-8kv1Up9T2Cun">
+    <mxGraphModel dx="601" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-0" />
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-1" parent="Mhifq8wT3R2IPqAItMqs-0" />
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-4" parent="Mhifq8wT3R2IPqAItMqs-1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=23;fontStyle=1;verticalAlign=middle;align=center;autosizeText=1;" value="Class diagram" vertex="1">
+          <mxGeometry height="40" width="160" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-5" parent="Mhifq8wT3R2IPqAItMqs-1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="StickyNote" vertex="1">
+          <mxGeometry height="124" width="180" x="330" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-6" parent="Mhifq8wT3R2IPqAItMqs-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- noteID: int&lt;div&gt;- title: CharField&lt;div&gt;- content: TextField&lt;/div&gt;&lt;/div&gt;&lt;div&gt;- dateCreated: DateTimeField&lt;/div&gt;" vertex="1">
+          <mxGeometry height="64" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-7" parent="Mhifq8wT3R2IPqAItMqs-5" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="180" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Mhifq8wT3R2IPqAItMqs-8" parent="Mhifq8wT3R2IPqAItMqs-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ str(): TextField" vertex="1">
+          <mxGeometry height="26" width="180" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="zh44j4jXyRH0VFX5P6Hw-2" parent="Mhifq8wT3R2IPqAItMqs-1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="User" vertex="1">
+          <mxGeometry height="124" width="160" x="80" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zh44j4jXyRH0VFX5P6Hw-3" parent="zh44j4jXyRH0VFX5P6Hw-2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- userID: int&lt;div&gt;- username: CharField&lt;div&gt;- email: TextField&lt;/div&gt;&lt;div&gt;- password: TextField&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="64" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zh44j4jXyRH0VFX5P6Hw-4" parent="zh44j4jXyRH0VFX5P6Hw-2" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="160" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zh44j4jXyRH0VFX5P6Hw-5" parent="zh44j4jXyRH0VFX5P6Hw-2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ str(): TextField" vertex="1">
+          <mxGeometry height="26" width="160" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="zh44j4jXyRH0VFX5P6Hw-12" edge="1" parent="Mhifq8wT3R2IPqAItMqs-1" source="Mhifq8wT3R2IPqAItMqs-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="zh44j4jXyRH0VFX5P6Hw-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

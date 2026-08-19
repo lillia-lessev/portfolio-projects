@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+  Sticky Notes - {{ note.title }}
+{% endblock %}
+{% block content %}
+  <h2>
+    {{ note.title }}
+  </h2>
+  <p>
+    {{ note.content|linebreaks }}
+  </p>
+  <p>
+    <b>Created by:</b> {{ note.user }} <br>
+    <b>Date created:</b> {{ note.date_created }}
+  </p>
+  <a href="{% url 'update_note' pk=note.pk %}" style="font-size: 17px; font-weight: bold;">Update Note</a><br><br>
+  <a href="{% url 'delete_note' pk=note.pk %}">Delete Note</a><br><br>
+  <a href="{% url 'view_all_notes' %}" style="font-weight: bold; font-size: 20px;">Back to All Notes</a>
+{% endblock %}

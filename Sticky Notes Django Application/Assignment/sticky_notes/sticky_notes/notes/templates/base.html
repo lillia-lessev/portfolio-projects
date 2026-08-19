@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Sticky Notes
+      {% endblock title %}
+    </title>
+
+    <link href="{% static 'notes/style.css' %}" rel="stylesheet" type="text/css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Add your CSS links or stylesheets here -->
+    <link rel="stylesheet" href="{% static 'notes/styles.css' %}" />
+
+  </head>
+
+  <body style="background-color: rgb(218, 245, 255)">
+    <header>
+      <h1><b>
+        {% block header %}
+          Sticky Notes
+        {% endblock header %}
+      </b></h1>
+      <!-- Add navigation links or other header content here -->
+      <p>A place to store your thoughts</p>
+    </header>
+    <main style="background-color: rgb(241, 253, 255)">
+        {% block content %}
+        {% endblock content %}
+      </div>
+
+      
+    </main>
+    <footer>
+      <!-- Add footer content or links here -->
+      <p><b>Sticky Notes</b> Django application by <b><i>Lillia Lessev</i></b></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  </body>
+</html>
