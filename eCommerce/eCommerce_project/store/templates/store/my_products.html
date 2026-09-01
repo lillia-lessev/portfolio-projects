@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>My Products</h1>
+    <p><a href="{% url 'store:create_product' %}" class="btn">+ Add New Product</a></p>
+
+    {% if products %}
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Store</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="80">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.store.name }}</td>
+                    <td>R{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>
+                        <a href="{% url 'store:product_detail' product.pk %}">View</a> |
+                        <a href="{% url 'store:edit_product' product.pk %}">Edit</a> |
+                        <a href="{% url 'store:delete_product' product.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You don’t have any products yet.</p>
+    {% endif %}
+{% endblock %}

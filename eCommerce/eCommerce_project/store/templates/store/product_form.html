@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if stores %}
+            <p>
+                <label>Select Store:</label><br>
+                <select name="store" required>
+                    <option value="" disabled {% if not selected_store_id %}selected{% endif %}>
+                        -- Select a store --
+                    </option>
+                    {% for store in stores %}
+                        <option value="{{ store.id }}"
+                            {% if selected_store_id == store.id %}selected{% endif %}>
+                            {{ store.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </p>
+        {% endif %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Save Product</button>
+        <a href="{% url 'store:my_products' %}">Cancel</a>
+    </form>
+{% endblock %}

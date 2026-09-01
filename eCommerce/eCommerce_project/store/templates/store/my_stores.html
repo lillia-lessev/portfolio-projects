@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>My Stores</h1>
+    <p><a href="{% url 'store:create_store' %}" class="btn">+ Create New Store</a></p>
+
+    {% if stores %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+                <th>View Products</th>
+                <th>Add Products</th>
+            </tr>
+            {% for store in stores %}
+                <tr>
+                    <td>{{ store.name }}</td>
+                    <td>{{ store.description|truncatewords:15 }}</td>
+                    <td>
+                        <a href="{% url 'store:edit_store' store.pk %}">Edit</a> |
+                        <a href="{% url 'store:delete_store' store.pk %}">Delete</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'store:my_products' %}?store={{ store.pk }}">View Products</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'store:create_product' %}?store={{ store.pk }}">+ Add Product</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You don’t have any stores yet.</p>
+    {% endif %}
+{% endblock %}

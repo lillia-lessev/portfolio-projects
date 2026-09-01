@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Posts from Reddit</h1>
+
+    {% if posts.error %}
+        <p style="color: red;">{{ posts.error }}</p>
+    {% else %}
+        <ul>
+            {% for post in posts %}
+                <li style="margin-bottom: 15px;">
+                    <strong>{{ post.title }}</strong><br>
+                    by {{ post.author }}<br>
+                    <a href="{{ post.url }}" target="_blank">View Post</a>
+                </li>
+            {% empty %}
+                <li>No posts found.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

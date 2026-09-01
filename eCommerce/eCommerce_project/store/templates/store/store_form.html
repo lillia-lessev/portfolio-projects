@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Store</button>
+        <a href="{% url 'store:my_stores' %}">Cancel</a>
+    </form>
+{% endblock %}

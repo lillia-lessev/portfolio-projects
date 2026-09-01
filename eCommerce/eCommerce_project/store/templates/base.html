@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eCommerce Store</title>
+    <link href="{% static 'store/style.css' %}" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        nav a { margin-right: 15px; text-decoration: none; }
+        .messages { color: green; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'store:home' %}">Home</a>
+        <a href="{% url 'store:product_list' %}">Products</a>
+
+        {% if user.is_authenticated %}
+            {% if user.profile.user_type == 'buyer' or not user.profile.user_type %}
+                <a href="{% url 'store:cart' %}">Cart</a>
+            {% endif %}
+        
+            {% if user.profile.user_type == 'vendor' %}
+                <a href="{% url 'store:my_stores' %}">My Stores</a>
+                <a href="{% url 'store:my_products' %}">My Products</a>
+            {% endif %}
+
+            <a href="{% url 'accounts:logout' %}">Logout</a>
+            | Hello, <strong>{{ user.username }}</strong> |
+            <i>({{ user.profile.user_type }})</i>
+
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:register' %}">Register</a>
+        {% endif %}
+
+
+    </nav>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="messages">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

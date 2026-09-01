@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>All Products</h1>
+
+    {% if not user.is_authenticated %}
+        <p>Please login as a buyer in order to add products to your cart.</p>
+    {% endif %}
+
+    {% if products %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    {% if user.profile.user_type == 'buyer' and user.is_authenticated %}
+                        <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="80">
+                            {% else %}
+                                No image
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'store:product_detail' product.pk %}">
+                                {{ product.name }}
+                            </a>
+                        </td>
+                        <td>R{{ product.price }}</td>
+                        <td>{{ product.stock }}</td>
+
+                        {% if user.profile.user_type == 'buyer' and user.is_authenticated %}
+                            <td>
+                                <form method="post" action="{% url 'store:add_to_cart' product.id %}">
+                                    {% csrf_token %}
+                                    <label>Quantity:</label>
+                                    <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}">
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                            </td>
+                        {% endif %}
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No products found.</p>
+    {% endif %}
+{% endblock %}
