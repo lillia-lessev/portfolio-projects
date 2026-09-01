@@ -16,6 +16,8 @@
     <nav>
         <a href="{% url 'store:home' %}">Home</a>
         <a href="{% url 'store:product_list' %}">Products</a>
+        <a href="{% url 'store:vendor_list' %}">Vendors</a>
+        <a href="{% url 'store:store_list' %}">Stores</a>
 
         {% if user.is_authenticated %}
             {% if user.profile.user_type == 'buyer' or not user.profile.user_type %}

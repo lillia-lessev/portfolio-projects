@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Products in {{ store.name }}</h1>
+<p>
+  <a href="{% url 'store:store_list' %}">← All stores</a>
+  | Vendor: {{ store.owner.username }}
+</p>
+
+{% if products %}
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Stock</th>
+      {% if user.is_authenticated and user.profile.user_type == 'buyer' %}
+        <th>Action</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+      <tr>
+        <td>
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="80">
+          {% else %}No image{% endif %}
+        </td>
+        <td><a href="{% url 'store:product_detail' product.pk %}">{{ product.name }}</a></td>
+        <td>R{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        {% if user.is_authenticated and user.profile.user_type == 'buyer' %}
+          <td>
+            <form method="post" action="{% url 'store:add_to_cart' product.id %}">
+              {% csrf_token %}
+              <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}">
+              <button type="submit">Add to Cart</button>
+            </form>
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No products in this store.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>All Stores</h1>
+{% if stores %}
+<ul>
+  {% for store in stores %}
+    <li>
+      <a href="{% url 'store:store_product_list' store.id %}">{{ store.name }}</a>
+      (by {{ store.owner.username }})
+      – {{ store.description|truncatewords:15 }}
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No stores yet.</p>
+{% endif %}
+{% endblock %}

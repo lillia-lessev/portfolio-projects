@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Stores by {{ vendor.username }}</h1>
+<p><a href="{% url 'store:vendor_list' %}">← All vendors</a></p>
+{% if stores %}
+<ul>
+  {% for store in stores %}
+    <li>
+      <a href="{% url 'store:store_product_list' store.id %}">{{ store.name }}</a>
+      – {{ store.description|truncatewords:15 }}
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>This vendor has no stores yet.</p>
+{% endif %}
+{% endblock %}

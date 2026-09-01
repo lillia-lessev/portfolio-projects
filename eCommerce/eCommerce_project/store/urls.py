@@ -22,12 +22,18 @@ urlpatterns = [
     path('store/create/', views.create_store, name='create_store'),
     path('store/<int:pk>/edit/', views.edit_store, name='edit_store'),
     path('store/<int:pk>/delete/', views.delete_store, name='delete_store'),
+    path('stores/', views.store_list, name='store_list'),
+    path('stores/<int:store_id>/products/', views.store_product_list, name='store_product_list'),
 
     # Vendor – Products
     path('my-products/', views.my_products, name='my_products'),
     path('product/create/', views.create_product, name='create_product'),
     path('product/<int:pk>/edit/', views.edit_product, name='edit_product'),
     path('product/<int:pk>/delete/', views.delete_product, name='delete_product'),
+
+    # Vendor
+    path('vendors/', views.vendor_list, name='vendor_list'),
+    path('vendors/<int:vendor_id>/stores/', views.vendor_store_list, name='vendor_store_list'),
 
     # API Endpoints
     path('api/stores/', views.store_list_create, name='api_store_list_create'),

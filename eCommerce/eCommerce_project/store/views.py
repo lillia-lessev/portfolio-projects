@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from decimal import Decimal
 from .models import Product, Store, Order, OrderItem, Review
+from accounts.models import Profile
 from .forms import StoreForm, ProductForm, ReviewForm
 from .serializers import StoreSerializer, ProductSerializer, ReviewSerializer
 from .functions.reddit import get_reddit_posts
@@ -98,6 +99,39 @@ def add_review(request, pk):
 def is_vendor(user):
     """Check if the logged-in user is a vendor."""
     return user.is_authenticated and hasattr(user, 'profile') and user.profile.user_type == 'vendor'
+
+def vendor_list(request):
+    """List all users who are vendors."""
+    vendor_ids = Profile.objects.filter(user_type='vendor').values_list('user_id', flat=True)
+    vendors = User.objects.filter(id__in=vendor_ids).order_by('username')
+    return render(request, 'store/vendor_list.html', {'vendors': vendors})
+
+
+def vendor_store_list(request, vendor_id):
+    """List stores for one vendor."""
+    vendor = get_object_or_404(User, pk=vendor_id)
+    stores = Store.objects.filter(owner=vendor)
+    return render(request, 'store/vendor_store_list.html', {
+        'vendor': vendor,
+        'stores': stores,
+    })
+
+
+def store_list(request):
+    """List all stores (all vendors)."""
+    stores = Store.objects.select_related('owner').all()
+    return render(request, 'store/store_list.html', {'stores': stores})
+
+
+def store_product_list(request, store_id):
+    """List products for one store"""
+    store = get_object_or_404(Store, pk=store_id)
+    products = Product.objects.filter(store=store)
+    return render(request, 'store/store_product_list.html', {
+        'store': store,
+        'products': products,
+    })
+
 
 # ==================== STORE MANAGEMENT ====================
 
@@ -490,6 +524,7 @@ def checkout(request):
 
 # ==================== API VIEWS ====================
 @api_view(['GET', 'POST'])
+@authentication_classes([BasicAuthentication])
 def store_list_create(request):
     """ 
     GET - list all stores

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Vendors</h1>
+{% if vendors %}
+<ul>
+  {% for v in vendors %}
+    <li>
+      <a href="{% url 'store:vendor_store_list' v.id %}">{{ v.username }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No vendors yet.</p>
+{% endif %}
+{% endblock %}

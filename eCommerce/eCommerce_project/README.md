@@ -22,7 +22,8 @@ A Django eCommerce application allowing buyers to view, buy and review products 
 - Shopping cart (session-based)
 - Checkout and order creation
 - Product reviews and ratings
-- SQLite database (easy for development)
+- Users can browse Vendors / Stores / Products
+- MySQL database
 
 ### Tech Stack
 
@@ -33,12 +34,13 @@ A Django eCommerce application allowing buyers to view, buy and review products 
 
 ## Usage
 
-1. Clone / Extract the project
+1. Clone the repository
 
     ```bash
-    # If you received a zip file:
-    unzip eCommerce_application.zip
-    cd eCommerce_app/eCommerce_project 
+    git clone https://github.com/lillia-lessev/portfolio-projects.git
+    
+    cd portfolio-projects/eCommerce/eCommerce_project
+    ```
 
 2. Create and activate a virtual environment. 
     Copy and paste the following code into your terminal:
@@ -51,10 +53,10 @@ A Django eCommerce application allowing buyers to view, buy and review products 
         # macOS / Linux
         source venv/bin/activate
 
-3. Install dependancies
+3. Install dependencies
     Copy and paste the following code into your terminal:
 
-        pip install -r requirements
+        pip install -r requirements.txt
 
 4. Configure environment variables (Email / Password Recovery)
 
