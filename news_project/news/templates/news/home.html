@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to the News Application!</h1>
+
+<p>
+    Explore the latest articles from journalists and publishers.<br><br>
+
+    Readers can subscribe to specific publishers &/or independent journalists to receive newsletters from them.
+
+</p>
+
+<a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'article-list' %}">View Articles</a>
+<a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'newsletter-list' %}">View Newsletters</a>
+<a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'journalist-publisher-list' %}">View Journalists & Publishers</a>
+
+{% if user.is_authenticated and user.role == 'journalist' %}
+    <a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'article-create' %}">Create Article</a>
+{% endif %}
+
+{% if user.is_authenticated and user.role == 'journalist' %}
+    <a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'newsletter-create' %}">Create Newsletter</a>
+{% endif %}
+
+{% if user.is_authenticated and user.role == 'editor' %}
+    <a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'article-approve-list' %}">Approve Articles</a>
+{% endif %}
+
+{% endblock %}

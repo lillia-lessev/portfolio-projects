@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Journalists & Publishers{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">All Journalists & Publishers</h1>
+
+{% if not user.is_authenticated %}
+    <p style="text-align: center;">
+        Login as a reader to subscribe to journalists and publishers.
+    </p>
+{% elif user.is_authenticated and user.role == 'reader' %}
+    <p style="text-align: center;">
+        Explore articles by our various journalists!<br>
+        <br>
+        You can subscribe to individual journalists - 
+        both independent journalists and those part of a publishing house - 
+        to receive newsletters created by them.<br>
+        <br>
+        You can also subscribe to publishers, in which case, you will receive 
+        all newsletters created by any journalists under that publishing house.
+    </p>
+{% endif %}
+
+<h2 class="h4 mt-4">Publishers</h1>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Publisher</th>
+            <th>Journalists</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for publisher in publishers %}
+
+            {% comment %} ----------  PUBLISHER/S WITH JOURNALIST/S  ------------- {% endcomment %}
+
+            {% for journalist in publisher.journalists.all %}
+                <tr>
+                    <td>
+                        <strong>{{ publisher.name }}</strong>
+                        {% if publisher.description %}
+                            <br><br><small class="text-muted">{{ publisher.description|truncatewords:15 }}</small>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ journalist.username }}
+                    </td>
+                    <td class="text-nowrap">
+                        <a href="{% url 'journalist-articles' journalist.pk %}" class="btn btn-sm btn-outline-primary mb-1">
+                            View articles by journalist
+                        </a>
+
+                        <a href="{% url 'publisher-articles' publisher.pk %}" class="btn btn-sm btn-outline-primary mb-1">
+                            View articles from publisher
+                        </a>
+
+                        <br>
+
+                        {% if user.is_authenticated and user.role == 'reader' %}
+                            {% if journalist in user.subscribed_journalists.all %}
+                                <a href="{% url 'unsubscribe-journalist' journalist.pk %}" class="btn btn-sm btn-outline-danger mb-1">
+                                    Unsubscribe from journalist
+                                </a>
+                            {% else %}
+                                <a href="{% url 'subscribe-journalist' journalist.pk %}" class="btn btn-sm btn-outline-success mb-1">
+                                    Subscribe to journalist
+                                </a>
+                            {% endif %}
+                            
+                            {% if publisher in user.subscribed_publishers.all %}
+                                <a href="{% url 'unsubscribe-publisher' publisher.pk %}" class="btn btn-sm btn-outline-danger mb-1">
+                                    Unsubscribe from publisher
+                                </a>
+                            {% else %}
+                                <a href="{% url 'subscribe-publisher' publisher.pk %}" class="btn btn-sm btn-outline-success mb-1">
+                                    Subscribe to publisher
+                                </a>
+                            {% endif %}
+                        {% endif%}
+
+                    </td>
+                </tr>
+
+            {% comment %} ----------  PUBLISHER/S WITH NO  JOURNALIST/S  ------------- {% endcomment %}
+            {% empty %}
+                <tr>
+                    <td>
+                        <strong>{{ publisher.name }}</strong>
+                        {% if publisher.description %}
+                            <br><br><small class="text-muted">{{ publisher.description|truncatewords:15 }}</small>
+                        {% endif %}
+                    </td>
+                    <td><span class="text-muted">
+                        No journalists yet.
+                    </span></td>
+                    <td class="text-nowrap">
+
+                        <a href="{% url 'publisher-articles' publisher.pk %}" class="btn btn-sm btn-outline-primary mb-1">
+                            View articles from publisher
+                        </a>
+
+                        {% if user.is_authenticated and user.role == 'reader' %}
+                            {% if publisher in user.subscribed_publishers.all %}
+                                <a href="{% url 'unsubscribe-publisher' publisher.pk %}" class="btn btn-sm btn-outline-danger mb-1">
+                                    Unsubscribe from publisher
+                                </a>
+                            {% else %}
+                                <a href="{% url 'subscribe-publisher' publisher.pk %}" class="btn btn-sm btn-outline-success mb-1">
+                                    Subscribe to publisher
+                                </a>
+                            {% endif %}
+                        {% endif%}
+
+                    </td>
+                </tr>
+            {% endfor %}
+        {% empty %}
+            <tr>
+                <td><span class="text-muted">
+                    No publishers yet.
+                </span></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>    
+</div>
+
+
+<h2 class="h4 mt-4">Independent Journalists</h1>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Journalists</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for journalist in independent_journalists %}
+            <tr>
+                <td>
+                    <strong>{{ journalist.username }}</strong>
+                </td>
+                <td class="text-nowrap">
+                    <a href="{% url 'journalist-articles' journalist.pk %}" class="btn btn-sm btn-outline-primary">
+                        View articles by journalist
+                    </a>
+
+
+                    {% if user.is_authenticated and user.role == 'reader' %}
+                        {% if journalist in user.subscribed_journalists.all %}
+                            <a href="{% url 'unsubscribe-journalist' journalist.pk %}" class="btn btn-sm btn-outline-danger">
+                                Unsubscribe from journalist
+                            </a>
+                        {% else %}
+                            <a href="{% url 'subscribe-journalist' journalist.pk %}" class="btn btn-sm btn-outline-success">
+                                Subscribe to journalist
+                            </a>
+                        {% endif %}
+                    {% endif%}
+
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">
+                    No independent journalists.
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>    
+</div>
+
+
+
+{% endblock %}

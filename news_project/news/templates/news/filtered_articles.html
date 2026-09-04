@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+{% for article in articles %}
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="h5 card-title">
+                <a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a>
+            </h2>
+            <p class="card-text text-muted small">
+                By {{ article.author.username }}
+                {% if article.publisher %}
+                    | {{ article.publisher.name }}
+                {% endif %}
+                | {{ article.created_at|date:"d M Y" }}
+            </p>
+            <p class="card-text">
+                {{ article.content|truncatewords:40 }}
+            </p>
+        </div>
+    </div>
+
+{% empty %}
+    <p>No approved articles.</p>
+
+{% endfor %}
+
+<a href="{% url 'journalist-publisher-list' %}" class="btn btn-secondary">See <b>Journalists & Publishers</b></a>
+
+{% endblock %}

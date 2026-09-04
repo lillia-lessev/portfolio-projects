@@ -1,0 +1,83 @@
+h1 {
+    text-align: center;
+    padding: 0.01rem;
+    font-weight: bold;
+    color: rgb(13, 129, 42);
+}
+
+h2 {
+    text-align: center;
+    padding: 2%;
+    font-weight: bold;
+    color: rgb(13, 129, 42);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    background-color: #e8fff3;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    padding: 0.5rem 2%;
+    background-color: rgb(194, 238, 210);
+    border-bottom: none;
+    margin: 0;
+}
+
+
+.nav-item, 
+.nav-link {
+    margin: 0.25rem 0.25rem;
+    padding: 0.4rem 0.75rem;
+    line-height: 1.2;
+    border: none;
+}
+
+.navbar-text {
+    margin: 0.25rem 0.25rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.nav-item:hover {
+    outline-width: 0.25rem;
+    outline-color: rgb(51, 25, 122);
+    outline-style: groove;
+    border-radius: 0.5rem; 
+    /* border-bottom-left-radius: 50%; */
+    background-color: rgb(187, 250, 255);
+    /* transform: scale(0.98) ; */
+    /* font-weight: bold; */
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgb(235, 255, 241)
+}
+
+.article, .card.mb-3 {
+    /* border: 1px solid rgb(182, 182, 182); */
+    /* padding: 5%; */
+    margin: 1rem;
+    /* border-radius: 6px; */
+}
+
+
+span.helptext,
+.helptext {
+
+    color: rgb(103, 112, 170) !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
+    font-style: italic, oblique;
+}
+
+form p label,
+form label {
+    font-weight: bold;
+}

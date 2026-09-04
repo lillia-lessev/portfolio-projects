@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Confirm Delete Article{% endblock %}
+
+{% block content %}
+
+<h1>Confirm Delete Article</h1>
+<p>Are you sure you want to delete the article: {{ article.title }} ?</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger btn-lg w-100 mb-3">
+        Confirm Delete
+    </button>
+</form>
+
+<a href="{% url 'article-list' %}" class="btn btn-secondary btn-lg w-100 mb-3">
+    Cancel
+</a>
+
+{% endblock %}

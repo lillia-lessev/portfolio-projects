@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block content %}
+
+<h1>Newsletters</h1>
+
+{% if user.is_authenticated and user.role == 'journalist' %}
+    <a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'newsletter-create' %}">Create Newsletter</a>
+{% endif %}
+
+{% if not user.is_authenticated %}
+    <p>Please login to see newsletters.</p>
+{% elif user.role == 'reader' %}
+    {% for newsletter in newsletters %}
+        <div class="article mb-4">
+            <h2>{{ newsletter.title }}</h2>
+            <p>
+                {{ newsletter.description }}
+            </p>
+            <p><small>
+                By {{ newsletter.author.username }}
+                | {{ newsletter.created_at|date:"d M Y" }}
+            </small></p>
+            <a class="btn btn-sm btn-outline-secondary" href="{% url 'newsletter-detail' newsletter.pk %}">View Newsletter</a>
+        </div>
+    {% empty %}
+        <p>
+            No newsletters from the publishers or journalists you are subscribed to.
+        </p>
+    {% endfor %}
+
+{% else %}
+    {% for newsletter in newsletters %}
+        <div class="article mb-4">
+            <h2>{{ newsletter.title }}</h2>
+            <p>
+                {{ newsletter.description }}
+            </p>
+            <p><small>
+                By {{ newsletter.author.username }}
+                | {{ newsletter.created_at|date:"d M Y" }}
+            </small></p>
+
+            <a class="btn btn-sm btn-outline-secondary" href="{% url 'newsletter-detail' newsletter.pk %}">View Newsletter</a>
+
+
+            {% if user.is_authenticated %}
+                {% if user.role == 'editor' or user.role == 'journalist' and newsletter.author == user %}
+                    <a href="{% url 'newsletter-edit' newsletter.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                    <a href="{% url 'newsletter-delete' newsletter.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                {% endif %}
+            {% endif %}
+
+        </div>
+    {% empty %}
+        <p>
+            No newsletters yet.
+        </p>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}

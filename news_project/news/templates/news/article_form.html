@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Edit Article
+    {% else %}
+        Create Article
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    span.helptext,
+    .helptext {
+
+        display: block;
+        color: rgb(133, 142, 204);
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: small;
+        font-style: italic, oblique;
+    }
+
+    form p label,
+    form label {
+        font-weight: bold;
+    }
+</style>
+
+<h1>
+    {% if form.instance.pk %}
+        Edit Article
+    {% else %}
+        Create Article
+    {% endif %}
+</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+        Submit Article
+    </button>
+</form>
+
+{% endblock %}

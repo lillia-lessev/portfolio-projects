@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ newsletter.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ newsletter.title }}</h1>
+
+{% if newsletter.description %}
+    <p>
+        {{ newsletter.description }}
+    </p>
+{% endif %}
+
+<p><small>
+    By {{ newsletter.author.username }}
+    | {{ article.created_at|date:"d M Y" }}
+</small></p>
+
+<hr>
+
+
+{% for article in articles %}
+    <div class="article mb-4">
+        <h2><a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a></h2>
+        
+        <p><small>
+            By {{ article.author.username }}
+            {% if article.publisher %}
+                | {{ article.publisher.name }}
+            {% endif %}
+            | {{ article.created_at|date:"d M Y" }}
+        </small></p>
+
+        <p>
+            {{ article.content|truncatewords:40 }}
+        </p>
+
+
+        {% if user.is_authenticated %}
+            {% if user.role == 'editor' or user.role == 'journalist' and article.author == user %}
+                <a href="{% url 'newsletter-edit' article.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'newsletter-delete' article.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            {% endif %}
+        {% endif %}
+
+
+    </div>
+{% empty %}
+    <p>
+        No approved articles in this newsletter yet.
+    </p>
+{% endfor %}
+
+<a class="btn btn-secondary" href="{% url 'newsletter-list' %}">Back to Newsletters</a>
+
+
+{% endblock %}

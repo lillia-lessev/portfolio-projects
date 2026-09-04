@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ article.title }}</h1>
+
+    <p><small>
+        By {{ article.author.username }}
+        {% if article.publisher %}
+            | {{ article.publisher.name }}
+        {% endif %}
+        | {{ article.created_at|date:"d M Y H:i" }}
+    </small></p>
+
+    <div>
+        {% if user.is_authenticated %}
+            {% if user.role == 'editor' or user.role == 'journalist' and article.author == user %}
+                <a href="{% url 'article-edit' article.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'article-delete' article.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div>
+        {{ article.content|linebreaks }}
+    </div>
+
+</article>
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+
+<h1>Approved Articles</h1>
+
+{% if user.is_authenticated and user.role == 'journalist' %}
+    <a class="btn btn-primary btn-lg w-100 mb-3" href="{% url 'article-create' %}">Create Article</a>
+{% endif %}
+
+{% for article in articles %}
+    <div class="article mb-4">
+        <h2><a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a></h2>
+        
+        <p><small>
+            By {{ article.author.username }}
+            {% if article.publisher %}
+                | {{ article.publisher.name }}
+            {% endif %}
+            | {{ article.created_at|date:"d M Y" }}
+        </small></p>
+
+        <p>
+            {{ article.content|truncatewords:40 }}
+        </p>
+
+
+        {% if user.is_authenticated %}
+            {% if user.role == 'editor' or user.role == 'journalist' and article.author == user %}
+                <a href="{% url 'article-edit' article.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'article-delete' article.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            {% endif %}
+        {% endif %}
+
+
+    </div>
+{% empty %}
+    <p>
+        No approved articles yet.
+    </p>
+{% endfor %}
+
+{% endblock %}

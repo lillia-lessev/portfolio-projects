@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Approve Articles{% endblock %}
+
+{% block content %}
+
+<h1>Pending Articles</h1>
+<p><b>Review the pending articles and approve them to be published.</b></p>
+
+{% for article in articles %}
+    <div class="article">
+        <h2><a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a></h2>
+        
+        <p><small>
+            By {{ article.author.username }}
+            {% if article.publisher %}
+                | {{ article.publisher.name }}
+            {% endif %}
+            | {{ article.created_at|date:"d M Y" }}
+        </small></p>
+
+        <p>
+            {{ article.content|truncatewords:40 }}
+        </p>
+
+        <form method="post" action="{% url 'article-approve' article.pk %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Approve</button>
+        </form>
+
+    </div>
+{% empty %}
+    <p>
+        No articles awaiting approval.
+    </p>
+{% endfor %}
+
+
+{% endblock %}
